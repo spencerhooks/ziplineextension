@@ -5,10 +5,19 @@
     "manifest_version": 3,
     "author": "Spencer Hooks",
     "permissions": [
-        "tabs"
+        "tabs",
+        "storage"
     ],
+    "icons": { "16": "zeep16.png",
+           "48": "zeep48.png",
+          "128": "zeep128.png"
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    },
     "action":{
         "default_popup": "index.html",
-        "default_title": "Shorten This URL"
+        "default_title": "Send to Zipline"
     }
 }
