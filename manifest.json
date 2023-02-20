@@ -1,0 +1,14 @@
+{
+    "name": "Zipline URL Shortener",
+    "version": "0.1",
+    "description": "Creates Short URL Using Zipline",
+    "manifest_version": 3,
+    "author": "Spencer Hooks",
+    "permissions": [
+        "tabs"
+    ],
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Shorten This URL"
+    }
+}
