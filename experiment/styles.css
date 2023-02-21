@@ -7,21 +7,9 @@
 .title-bar {
     display: flex;
     align-items: center;
-    gap: 15px;
-}
-
-.title-icon {
-    margin: 0px 0px 0px 20px;
-}
-
-.title-text {
     font-size: 20px;
-    flex-grow: 5;
-    margin: 0px 0px 0px 0px;
-}
-
-.title-settings {
-    margin: 3px 20px 0px 0px;
+    justify-content: space-between;
+    margin: 5px 20px 5px 20px;
 }
 
 .main-body {
@@ -58,7 +46,7 @@
     display: flex;
     justify-content: flex-end;
     background-color: rgb(220, 223, 226);
-
+    width: 450px;
     margin-top: auto;
 }
 
@@ -72,9 +60,11 @@
     color: white;
 }
 
-body{
+body {
     width: 450px;
     height: 450px;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
     font-family: 'Roboto', sans-serif;
 }
-

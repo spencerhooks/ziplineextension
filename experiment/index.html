@@ -11,51 +11,36 @@
 
   <body>
 
-    <div class="main-container">
+    <div class="title-bar">
+        <img class="title-icon" src="icons/zipline.png" height="40">
 
-        <div class="title-bar">
-
-            <span class="title-icon">
-                <img src="icons/zipline.png" height="40">
-            </span>
-
-            <span class="title-text">
-                Create Zipline Link
-            </span>
-
-            <span class="title-settings">
-                <input type="image" name="settings-cog" src="icons/cogwheel.png" onClick="location.href='settings.html'" height="18">
-            </span>
-
-        </div>
+        Create Zipline Link
         
-        <div>
-            <hr>
-        </div>
+        <input type="image" class="title-settings" name="settings-cog" src="icons/icons8-settings-50.png" onClick="location.href='settings.html'" height="30">
+    </div>
+    
+    <div>
+        <hr>
+    </div>
 
-        <div class="main-body">
+    <div class="text-box-label">
+        Your Domain: 
+    </div>
 
-            <div class="text-box-label">
-                Your Domain: 
-            </div>
-            <div class="text-box-label">
-                Destination
-            </div>
+    <div class="text-box-label">
+        Destination
+    </div>
 
-            <textarea id="destination" cols="25" rows="5" class="my-input"></textarea>
-            
-            <div class="text-box-label">
-                Vanity (Optional)
-            </div>
-            
-            <input id="vanity" class="my-input">
+    <textarea id="destination" cols="25" rows="5" class="my-input"></textarea>
+    
+    <div class="text-box-label">
+        Vanity (Optional)
+    </div>
+    
+    <input id="vanity" class="my-input">
 
-        </div>
-
-        <div class="button-area">
-            <button id="create-link" class="my-button" type="button">Create Short Link</button>
-        </div>
-
+    <div class="button-area">
+        <button id="create-link" class="my-button" type="button">Create Short Link</button>
     </div>
 
 </body>
