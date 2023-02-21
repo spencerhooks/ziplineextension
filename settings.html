@@ -9,14 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body id="settingsBody">
 
     <div class="title-bar">
-        <img class="title-icon" src="icons/zipline.png" height="40">
+        <img class="title-icon" src="icons/zipline.png" height="35">
 
         Zipline Settings
 
-        <input type="image" name="back" src="icons/icons8-cancel-50.png" onClick="location.href='index.html'" height="30">
+        <input type="image" id="cancelButton" src="icons/icons8-cancel-50.png" height="25">
     </div>
     
     <div>
@@ -27,17 +27,18 @@
         Server Address
     </div>
 
-    <input id="server-address" class="my-input">
+    <input id="serverAddress" class="my-input">
 
     <div class="text-box-label">
         API Token
     </div>
     
-    <input id="api-token" class="my-input">
+    <input id="apiToken" class="my-input">
 
     <div class="button-area">
-        <button id="save-settings-button" class="my-button" type="button">Save Settings</button>
+        <button id="saveButton" class="my-button" type="button">Save Settings</button>
     </div>
 
 </body>
+<script src="settings.js"></script>
 </html>
