@@ -58,7 +58,8 @@
     display: flex;
     justify-content: flex-end;
     background-color: rgb(220, 223, 226);
-    margin: 20px 0px 0px 0px;
+
+    margin-top: auto;
 }
 
 .my-button {
