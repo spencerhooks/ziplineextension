@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Zipline Short URL Extension</title>
+    <title>Zipline Short URL Extension Settings</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,15 +16,11 @@
         <div class="title-bar">
 
             <span class="title-icon">
-                <img src="icons/zipline.png" height="40">
+                <input type="image" name="back" src="icons/backarrow.png" onClick="location.href='index.html'" height="40">
             </span>
 
             <span class="title-text">
-                Create Zipline Link
-            </span>
-
-            <span class="title-settings">
-                <input type="image" name="settings-cog" src="icons/cogwheel.png" onClick="location.href='settings.html'" height="18">
+                Settings
             </span>
 
         </div>
@@ -35,25 +31,23 @@
 
         <div class="main-body">
 
-            <div class="text-box-label">
-                Your Domain: 
             </div>
             <div class="text-box-label">
-                Destination
+                Server Address
             </div>
 
-            <textarea id="destination" cols="25" rows="5" class="my-input"></textarea>
-            
+            <input id="server-address" class="my-input">
+
             <div class="text-box-label">
-                Vanity (Optional)
+                API Token
             </div>
             
-            <input id="vanity" class="my-input">
+            <input id="api-token" class="my-input">
 
         </div>
 
         <div class="button-area">
-            <button class="my-button" type="button">Create Short Link</button>
+            <button id="save-settings-button" class="my-button" type="button">Save Settings</button>
         </div>
 
     </div>
