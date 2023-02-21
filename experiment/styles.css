@@ -1,0 +1,9 @@
+body{
+    width: 450px;
+    height: 450px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+    padding:10;
+}

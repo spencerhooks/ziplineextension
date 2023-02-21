@@ -6,11 +6,12 @@
     "author": "Spencer Hooks",
     "permissions": [
         "tabs",
-        "storage"
+        "storage",
+        "clipboardWrite"
     ],
-    "icons": { "16": "zeep16.png",
-           "48": "zeep48.png",
-          "128": "zeep128.png"
+    "icons": { "16": "icons/zeep16.png",
+           "48": "icons/zeep48.png",
+          "128": "icons/zeep128.png"
     },
     "options_ui": {
         "page": "options.html",
