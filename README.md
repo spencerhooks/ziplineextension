@@ -16,6 +16,7 @@ _Security note: The API token is stored in storage.sync. Google does not recomme
 1. Add error handling for failed requests
 1. Add error handling for server address input
 1. Add a new page to show after the request with the result?
+1. Add effect to buttons to show that they've been pushed?
 1. Investigate another storage solution with better security
 1. Possibly change token input box to password type so that it is obscured. If I do, I'd like to make one that has a visible button.
 
