@@ -12,6 +12,7 @@ To do list:
 2. Investigate another storage solution with better security
 3. Possibly change token input box to password type so that it is obscured. Can't decide if that is necessary (might be annoying).
 
-
-<a target="_blank" href="https://icons8.com/icon/2969/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+<br>
+<br>
+<a target="_blank" href="https://icons8.com/icon/2969/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> <br>
 <a target="_blank" href="https://icons8.com/icon/7703/cancel">Cancel</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
