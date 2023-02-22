@@ -1,7 +1,7 @@
 {
     "name": "Zipline URL Shortener",
     "version": "0.1",
-    "description": "Creates Short URL Using Zipline",
+    "description": "Create short URLs using Zipline (zipline.diced.tech)",
     "manifest_version": 3,
     "author": "Spencer Hooks",
     "permissions": [
