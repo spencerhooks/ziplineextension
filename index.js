@@ -2,7 +2,7 @@
 settingsCog.addEventListener('click', function(){location.href = 'settings.html';});
 
 // Get the stored value for the users server and indicate that on the page
-chrome.storage.sync.get(['myServerStored', 'myTokenStored'], function(data) {
+chrome.storage.sync.get(['myServerStored'], function(data) {
     document.getElementById("your-domain").innerHTML = data.myServerStored;
 });
 
@@ -24,21 +24,33 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.setRequestHeader('authorization', data.myTokenStored);
 
-            // Function to read the short url that is returned via json
+            // Function to read what is returned from the request and take action 
             xhr.onload = () => {
                 const shortURL = xhr.response;
-                navigator.clipboard.writeText(shortURL[url]).then();
+                console.log(xhr.status);
+                console.log(xhr.response);
+                switch (xhr.status) {
+                    case 200:
+                        document.getElementById("success").style.display = "inline";
+                        navigator.clipboard.writeText(shortURL[url]).then();
+                        break;
+                    case 400:
+                        document.getElementById("forbidden").style.display = "inline";
+                        break;
+                };              
             };
 
             // Create json payload
             let serverObj = {};
-            serverObj[url="url"] = tabs[0].url;
+            serverObj[url="url"] = document.getElementById("destination").value;
 
             // Send request with payload
             xhr.send(JSON.stringify(serverObj));
 
-            setTimeout(function(){window.close()}, 500);
+            // setTimeout(function(){window.close()}, 500);
         });
     };
 });
 
+success_closebtn.addEventListener('click', function () {document.getElementById("success").style.display = "none"});
+forbidden_closebtn.addEventListener('click', function () {document.getElementById("forbidden").style.display = "none"});

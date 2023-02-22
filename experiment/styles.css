@@ -1,24 +1,14 @@
 .alert {
     position: absolute;
-    top: 0px;
-    width: 320px;
+    top: 100px;
+    width: 370px;
     padding: 20px;
-    font-size: 16px;
-    display: none;
-}
-
-#success {
-    background-color: green;
+    background-color: #f44336;
     color: white;
 }
-
-#forbidden {
-    background-color: red;
-    color: white;
-}
-
+  
 .closebtn {
-    margin-left: 5px;
+    margin-left: 15px;
     color: white;
     font-weight: bold;
     float: right;
@@ -30,6 +20,12 @@
   
 .closebtn:hover {
     color: black;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .title-bar {
@@ -59,7 +55,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-#destination {
+.my-input[id*='destination'] {
     height: 92px;
     resize: none;
     padding: 4px;
@@ -87,7 +83,7 @@
     border: 1px solid #216ead;
     background-color: #216ead;
     color: white;
-    cursor: pointer;
+    cursor: pointer; /* add to prod versioon */
 }
 
 body {
