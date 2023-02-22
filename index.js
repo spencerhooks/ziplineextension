@@ -27,8 +27,7 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
             // Function to read the short url that is returned via json
             xhr.onload = () => {
                 const shortURL = xhr.response;
-                console.log(shortURL);
-                // navigator.clipboard.writeText("testingstuff").then();
+                navigator.clipboard.writeText(shortURL[url]).then();
             };
 
             // Create json payload
@@ -38,7 +37,7 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
             // Send request with payload
             xhr.send(JSON.stringify(serverObj));
 
-            // setTimeout(function(){window.close(), 1000});
+            setTimeout(function(){window.close()}, 500);
         });
     };
 });

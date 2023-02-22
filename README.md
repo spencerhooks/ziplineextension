@@ -14,10 +14,10 @@ _Security note: The API token is stored in storage.sync. Google does not recomme
 ## To Do List
 1. Add vanity functionality
 1. Add error handling for failed requests
-1. Figure out why closing the window after a request causes it to fail (for now, don't close)
+1. Add error handling for server address input
 1. Add a new page to show after the request with the result?
 1. Investigate another storage solution with better security
-1. Possibly change token input box to password type so that it is obscured. Can't decide if that is necessary (might be annoying).
+1. Possibly change token input box to password type so that it is obscured. If I do, I'd like to make one that has a visible button.
 
 <br>
 <br>
