@@ -1,4 +1,4 @@
-# ziplineextension
+# Zipline Chrome Extension
 A Chrome extension to create short URLs using Zipline. This extension is being developed and tested (so far) using Brave v1.48.167.
 
 ## Screenshots (In Development)
