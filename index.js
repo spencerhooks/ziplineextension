@@ -31,11 +31,20 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
                 console.log(xhr.response);
                 switch (xhr.status) {
                     case 200:
-                        document.getElementById("success").style.display = "inline";
+                        document.getElementById("alert").style.backgroundColor = "green"
+                        document.getElementById("alert-text").innerHTML = "<strong>Success!</strong> Short URL copied to clipboard"
+                        document.getElementById("alert").style.display = "inline";
                         navigator.clipboard.writeText(shortURL[url]).then();
                         break;
                     case 400:
-                        document.getElementById("forbidden").style.display = "inline";
+                        document.getElementById("alert").style.backgroundColor = "red"
+                        document.getElementById("alert-text").innerHTML = "<strong>Uh oh!</strong> Something went wrong"
+                        document.getElementById("alert").style.display = "inline";
+                        break;
+                    case 401:
+                        document.getElementById("alert").style.backgroundColor = "red"
+                        document.getElementById("alert-text").innerHTML = "<strong>Authentication Failed!</strong> Check your token"
+                        document.getElementById("alert").style.display = "inline";
                         break;
                 };              
             };
@@ -52,5 +61,4 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
     };
 });
 
-success_closebtn.addEventListener('click', function () {document.getElementById("success").style.display = "none"});
-forbidden_closebtn.addEventListener('click', function () {document.getElementById("forbidden").style.display = "none"});
+closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});
