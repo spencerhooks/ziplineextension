@@ -16,9 +16,37 @@ function getInputValue(){
     var inputServer = document.getElementById("serverAddress").value;
     var inputToken = document.getElementById("apiToken").value;
 
+    // Do some input validation and show alerts based on what we find
+    // First check for a valid URL
+    try {
+        new URL(inputServer);
+    } catch (e) {
+        sendAlert(alertColor="red", alertText="<strong>Invalid URL</strong> Please enter valid URL");
+        return;
+    };
+
+    // Check to see if token is correct length
+    if (inputToken.length != 43) {
+        sendAlert(alertColor="red", alertText="<strong>Invalid Token Length</strong> Check token");
+        return;
+    };
+
     // Store the value
-    chrome.storage.sync.set({ myServerStored: inputServer }); // 
-    chrome.storage.sync.set({ myTokenStored: inputToken }); // Is this a secure way to store the token?
-    location.href = 'index.html';
+    console.log("server validated and returned true");
+    chrome.storage.sync.set({ myServerStored: inputServer });
+    chrome.storage.sync.set({ myTokenStored: inputToken });
+    sendAlert(alertColor="green", alertText="<strong>Success!</strong> Settings saved");
+    setTimeout(function(){location.href = 'index.html'}, 800);
+
 };
+
+// Create an alert by changing the hidden div and making it visible
+function sendAlert(alertColor, alertText){
+    document.getElementById("alert").style.backgroundColor = alertColor;
+    document.getElementById("alert-text").innerHTML = alertText;
+    document.getElementById("alert").style.display = "inline";
+}
+
+// Listen for clicks on the alert's close button
+closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});
 

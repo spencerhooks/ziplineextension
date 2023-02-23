@@ -24,27 +24,21 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.setRequestHeader('authorization', data.myTokenStored);
 
-            // Function to read what is returned from the request and take action 
+            // Read what is returned from the request and take action 
             xhr.onload = () => {
                 const shortURL = xhr.response;
                 console.log(xhr.status);
                 console.log(xhr.response);
                 switch (xhr.status) {
                     case 200:
-                        document.getElementById("alert").style.backgroundColor = "green"
-                        document.getElementById("alert-text").innerHTML = "<strong>Success!</strong> Short URL copied to clipboard"
-                        document.getElementById("alert").style.display = "inline";
+                        sendAlert(alertColor="green", alertText="<strong>Success!</strong> Short URL copied to clipboard");
                         navigator.clipboard.writeText(shortURL[url]).then();
                         break;
                     case 400:
-                        document.getElementById("alert").style.backgroundColor = "red"
-                        document.getElementById("alert-text").innerHTML = "<strong>Uh oh!</strong> Something went wrong"
-                        document.getElementById("alert").style.display = "inline";
+                        sendAlert(alertColor="red", alertText="<strong>Uh oh!</strong> Something went wrong");
                         break;
                     case 401:
-                        document.getElementById("alert").style.backgroundColor = "red"
-                        document.getElementById("alert-text").innerHTML = "<strong>Authentication Failed!</strong> Check your token"
-                        document.getElementById("alert").style.display = "inline";
+                        sendAlert(alertColor="red", alertText="<strong>Authentication Failed!</strong> Check your token");
                         break;
                 };              
             };
@@ -56,9 +50,15 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
             // Send request with payload
             xhr.send(JSON.stringify(serverObj));
 
-            // setTimeout(function(){window.close()}, 500);
+            setTimeout(function(){window.close()}, 800);
         });
     };
 });
+
+function sendAlert(alertColor, alertText){
+    document.getElementById("alert").style.backgroundColor = alertColor;
+    document.getElementById("alert-text").innerHTML = alertText;
+    document.getElementById("alert").style.display = "inline";
+}
 
 closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});

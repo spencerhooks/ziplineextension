@@ -13,10 +13,6 @@
            "48": "icons/zipline48.png",
           "128": "icons/zipline128.png"
     },
-    "options_ui": {
-        "page": "options.html",
-        "open_in_tab": false
-    },
     "action":{
         "default_popup": "index.html",
         "default_title": "Send to Zipline"
