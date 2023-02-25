@@ -3,7 +3,12 @@ settingsCog.addEventListener('click', function(){location.href = 'settings.html'
 
 // Get the stored value for the users server and indicate that on the page
 chrome.storage.sync.get(['myServerStored'], function(data) {
-    document.getElementById("your-domain").innerHTML = data.myServerStored;
+    try {
+        const serverURL = new URL(data.myServerStored);
+        document.getElementById("your-domain").innerHTML = serverURL.protocol + "//" + serverURL.hostname;
+    } catch {
+        document.getElementById("your-domain").innerHTML = data.myServerStored;
+    }
 });
 
 chrome.tabs.query({active: true, currentWindow: true}, tabs => {
@@ -46,6 +51,9 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
             // Create json payload
             let serverObj = {};
             serverObj[url="url"] = document.getElementById("destination").value;
+            if (document.getElementById("vanity").value) {
+                serverObj[vanity="vanity"] = document.getElementById("vanity").value;
+            };
 
             // Send request with payload
             xhr.send(JSON.stringify(serverObj));

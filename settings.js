@@ -18,12 +18,12 @@ function getInputValue(){
 
     // Do some input validation and show alerts based on what we find
     // First check for a valid URL
-    try {
-        new URL(inputServer);
-    } catch (e) {
-        sendAlert(alertColor="red", alertText="<strong>Invalid URL</strong> Please enter valid URL");
-        return;
-    };
+    // try {
+    //     new URL(inputServer);
+    // } catch {
+    //     sendAlert(alertColor="red", alertText="<strong>Invalid URL</strong> Please enter valid URL");
+    //     return;
+    // };
 
     // Check to see if token is correct length
     if (inputToken.length != 43) {
