@@ -12,11 +12,10 @@ _Security note: The API token is stored in storage.sync. Google does not recomme
 <br>
 ***
 ## To Do List
-1. Add vanity functionality
-1. Improve error handling for failed requests
-1. Improve input validation for settings
-1. Add effect to buttons to show that they've been pushed (using alerts for now)
-1. Investigate another storage solution with better security
+1. Figure out why Firefox doesn't allow access to storage
+1. Do more complete testing on Edge & Chrome (works initially)
+1. handle one final error with failed request (no-cors fetch blocker)
+1. Add effect to buttons to show that they've been pushed (using alerts for now)?
 1. Possibly change token input box to password type so that it is obscured. If I do, I'd like to make one that has a visible button.
 
 <br>

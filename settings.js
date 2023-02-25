@@ -1,7 +1,11 @@
 // Get the stored values and show them to the user via the input boxes
 chrome.storage.sync.get(['myServerStored', 'myTokenStored'], function(data) {
-    document.getElementById("serverAddress").setAttribute('value', data.myServerStored);
-    document.getElementById("apiToken").setAttribute('value', data.myTokenStored);
+    if (data.myServerStored != undefined) {
+        document.getElementById("serverAddress").setAttribute('value', data.myServerStored);
+    }
+    if (data.myTokenStored != undefined) {
+        document.getElementById("apiToken").setAttribute('value', data.myTokenStored);
+    }
 });
 
 // Add listener to the "Save Settings" button and call function to get & store values
