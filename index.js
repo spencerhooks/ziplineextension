@@ -22,6 +22,12 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
     function getShortURL(){
         chrome.storage.sync.get(['myServerStored', 'myTokenStored'], function(data) {
 
+            // Make sure path ends in /api/shorten
+            const hostURL = new URL(data.myServerStored);
+            if (hostURL.pathname != "/api/shorten") {
+                hostURL.pathname = hostURL.pathname + "api/shorten";
+            };
+
             // Create json payload
             let serverObj = {};
             serverObj[url="url"] = document.getElementById("destination").value;
@@ -29,32 +35,26 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
                 serverObj[vanity="vanity"] = document.getElementById("vanity").value;
             };
 
-            requestURL(data.myServerStored+'/api/shorten', data.myTokenStored, serverObj).then((data) => {
-                try {
-                    data.json().then((payload) => {
-                        console.log(data.status);
-                        switch (data.status) {
-                            case 200:
-                                sendAlert(alertColor="green", alertText="<strong>Success!</strong> Short URL copied to clipboard");
-                                navigator.clipboard.writeText(payload[url]).then();
-                                break;
-                            case 400:
-                                sendAlert(alertColor="red", alertText="<strong>Request Error!</strong> " + payload.error);
-                                break;
-                            case 401:
-                                sendAlert(alertColor="red", alertText="<strong>Auth Error!</strong> " + payload.error);
-                                break;
-                            case 405 || 405:
-                                sendAlert(alertColor="red", alertText="<strong>Uknown Host!</strong> server not found");
-                            default:
-                                sendAlert(alertColor="red", alertText="<strong>Uknown Response!</strong> something went wrong");
-                        };
-
-                        console.log(payload);
-                    });
-                } catch {
-
-                };
+            requestURL(hostURL, data.myTokenStored, serverObj).then((data) => {
+                data.json().then((payload) => {
+                    console.log(data.status);
+                    switch (data.status) {
+                        case 200:
+                            sendAlert(alertColor="green", alertText="<strong>Success!</strong> Short URL copied to clipboard");
+                            navigator.clipboard.writeText(payload[url]).then();
+                            break;
+                        case 400:
+                            sendAlert(alertColor="red", alertText="<strong>Request Error!</strong> " + payload.error);
+                            break;
+                        case 401:
+                            sendAlert(alertColor="red", alertText="<strong>Auth Error!</strong> " + payload.error);
+                            break;
+                        case 405 || 405:
+                            sendAlert(alertColor="red", alertText="<strong>Uknown Host!</strong> server not found");
+                        default:
+                            sendAlert(alertColor="red", alertText="<strong>Uknown Response!</strong> something went wrong");
+                    };
+                });
             });
 
 
@@ -72,17 +72,18 @@ function sendAlert(alertColor, alertText){
 closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});
 
 async function requestURL(url = '', auth = '', data = {}) {
-    try {    
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': auth
-            },
-            body: JSON.stringify(data)
-        });
-        return response;
-    } catch {
-        sendAlert(alertColor="red", alertText="<strong>Request Failed!</strong> no response");
-    };
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': auth
+        },
+        body: JSON.stringify(data)
+    })
+    .catch( err => {
+        sendAlert(alertColor="red", alertText="<strong>Request Failed!</strong> " + err);
+    });
+
+    return response;
+
 };
