@@ -25,12 +25,14 @@
 
     <div class="text-box-label">
         Server Address
+        <span id="serverInfo" class="infoButton">&#x1F6C8</span>
     </div>
 
     <input type="url" id="serverAddress" class="my-input" placeholder="https://myserver.com:3000" />
 
     <div class="text-box-label">
-        API Token
+        API Authorization Token
+        <span id="tokenInfo" class="infoButton">&#x1F6C8</span> 
     </div>
     
     <input id="apiToken" class="my-input" placeholder="Paste token from Zipline">
@@ -42,8 +44,8 @@
 </body>
 
 <div class="alert" id="alert">
-    <span id="closebtn" class="closebtn">&times;</span> 
     <span id="alert-text"></span>
+    <span id="closebtn" class="closebtn">&times;</span> 
 </div>
 
 <script src="settings.js"></script>

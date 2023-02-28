@@ -8,7 +8,7 @@ chrome.storage.sync.get(['myServerStored'], function(data) {
         document.getElementById("your-domain").innerHTML = serverURL.protocol + "//" + serverURL.hostname;
     } catch {
         document.getElementById("your-domain").innerHTML = data.myServerStored;
-    }
+    };
 });
 
 chrome.tabs.query({active: true, currentWindow: true}, tabs => {
@@ -21,31 +21,11 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
     // Function to request the short URL
     function getShortURL(){
         chrome.storage.sync.get(['myServerStored', 'myTokenStored'], function(data) {
-                       
-            // Create http request headers
-            let xhr = new XMLHttpRequest();
-            xhr.responseType = 'json';
-            xhr.open("POST", data.myServerStored+'/api/shorten', true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('authorization', data.myTokenStored);
 
-            // Read what is returned from the request and take action 
-            xhr.onload = () => {
-                const shortURL = xhr.response;
-                console.log(xhr.status);
-                console.log(xhr.response);
-                switch (xhr.status) {
-                    case 200:
-                        sendAlert(alertColor="green", alertText="<strong>Success!</strong> Short URL copied to clipboard");
-                        navigator.clipboard.writeText(shortURL[url]).then();
-                        break;
-                    case 400:
-                        sendAlert(alertColor="red", alertText="<strong>Uh oh!</strong> Something went wrong");
-                        break;
-                    case 401:
-                        sendAlert(alertColor="red", alertText="<strong>Authentication Failed!</strong> Check your token");
-                        break;
-                };              
+            // Make sure path ends in /api/shorten
+            const hostURL = new URL(data.myServerStored);
+            if (hostURL.pathname != "/api/shorten") {
+                hostURL.pathname = hostURL.pathname + "api/shorten";
             };
 
             // Create json payload
@@ -55,10 +35,39 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
                 serverObj[vanity="vanity"] = document.getElementById("vanity").value;
             };
 
-            // Send request with payload
-            xhr.send(JSON.stringify(serverObj));
+            // Make the POST request to get the short link back. The error handling here was difficult for me to understand and is still
+            // a bit fuzzy. I made heavy use of stackoverflow examples...
+            fetch(hostURL.href, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'authorization': data.myTokenStored
+                },
+                body: JSON.stringify(serverObj)
+              })
+              .then(response => {
+                if (!response.ok) throw response;
+                return response.json();
+              })
+              .then(response => {
+                sendAlert(alertColor="green", alertText="<strong>Success!</strong> Short URL copied to clipboard");
+                navigator.clipboard.writeText(response.url).then();
+                setTimeout(function(){window.close()}, 800);
+                return response;
+              })
+              .catch(error => {
+                    if (typeof error.json === "function") {
+                        error.json().then(jsonError => {
+                            sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> " + jsonError.error);
+                        }).catch(genericError => {
+                            sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> can't contact server");
+                        });
+                    } else {
+                        sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> error requesting link");
+                    }
+              }); 
 
-            setTimeout(function(){window.close()}, 800);
         });
     };
 });
@@ -66,7 +75,12 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
 function sendAlert(alertColor, alertText){
     document.getElementById("alert").style.backgroundColor = alertColor;
     document.getElementById("alert-text").innerHTML = alertText;
-    document.getElementById("alert").style.display = "inline";
+    document.getElementById("alert").style.display = "flex";
 }
 
 closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});
+
+// Listen for click on Vanity info button and show alert with more information
+vanityInfo.addEventListener('click', function () {
+    sendAlert(alertColor="#216ead", alertText="Optional custom link extension for Zipline to use instead of a random string.")
+});

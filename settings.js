@@ -1,7 +1,11 @@
 // Get the stored values and show them to the user via the input boxes
 chrome.storage.sync.get(['myServerStored', 'myTokenStored'], function(data) {
-    document.getElementById("serverAddress").setAttribute('value', data.myServerStored);
-    document.getElementById("apiToken").setAttribute('value', data.myTokenStored);
+    if (data.myServerStored != undefined) {
+        document.getElementById("serverAddress").setAttribute('value', data.myServerStored);
+    }
+    if (data.myTokenStored != undefined) {
+        document.getElementById("apiToken").setAttribute('value', data.myTokenStored);
+    }
 });
 
 // Add listener to the "Save Settings" button and call function to get & store values
@@ -18,12 +22,12 @@ function getInputValue(){
 
     // Do some input validation and show alerts based on what we find
     // First check for a valid URL
-    // try {
-    //     new URL(inputServer);
-    // } catch {
-    //     sendAlert(alertColor="red", alertText="<strong>Invalid URL</strong> Please enter valid URL");
-    //     return;
-    // };
+    try {
+        new URL(inputServer);
+    } catch {
+        sendAlert(alertColor="red", alertText="<strong>Invalid URL</strong> Please enter valid URL");
+        return;
+    };
 
     // Check to see if token is correct length
     if (inputToken.length != 43) {
@@ -32,7 +36,6 @@ function getInputValue(){
     };
 
     // Store the value
-    console.log("server validated and returned true");
     chrome.storage.sync.set({ myServerStored: inputServer });
     chrome.storage.sync.set({ myTokenStored: inputToken });
     sendAlert(alertColor="green", alertText="<strong>Success!</strong> Settings saved");
@@ -44,9 +47,19 @@ function getInputValue(){
 function sendAlert(alertColor, alertText){
     document.getElementById("alert").style.backgroundColor = alertColor;
     document.getElementById("alert-text").innerHTML = alertText;
-    document.getElementById("alert").style.display = "inline";
+    // document.getElementById("alert").style.display = "inline";
+    document.getElementById("alert").style.display = "flex";
 }
 
 // Listen for clicks on the alert's close button
 closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});
 
+// Listen for click on API Authorization Token info button and show alert with more information
+tokenInfo.addEventListener('click', function () {
+    sendAlert(alertColor="#216ead", alertText="Copy token from your Zipline dashboard by clicking your username in the top right.")
+});
+
+// Listen for click on Server Address info button and show alert with more information
+serverInfo.addEventListener('click', function () {
+    sendAlert(alertColor="#216ead", alertText="Enter the url of your Zipline server (including the port number, if necessary). This should be what you use to reach the Zipline dashboard. No need to include path to api (i.e. /api/shorten).")
+});
