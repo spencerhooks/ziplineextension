@@ -1,10 +1,11 @@
 # Zipline Chrome Extension
-A Chrome extension to create short URLs using [Zipline](https://zipline.diced.tech/). This extension is being developed and tested (so far) using Brave v1.48.167. I don't really know what I'm doing, so feedback is welcome. It's basically working as is.
+A Chrome extension to create short URLs using [Zipline](https://zipline.diced.tech/). This extension is being developed and tested (so far) using Brave v1.48.167. It is in a working state in Chrome, Edge, and Firefox, but needs more testing.
+<br>
+<br>
 
-<br>
-<br>
 ***
-## Screenshots (In Development)
+
+## Screenshots
 
 ![Main Page](https://h8ks.me/u/8gFUxK.png) ![Settings Page](https://h8ks.me/u/n2Xs1x.png)
 <br>
