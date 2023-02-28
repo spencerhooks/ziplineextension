@@ -10,6 +10,11 @@
         "clipboardWrite"
     ],
     "host_permissions": ["*://*/"], 
+    "browser_specific_settings":{
+        "gecko": {
+            "id": "ziplineextension@example.org"
+        }
+    },
     "icons": { "16": "icons/zipline16.png",
            "48": "icons/zipline48.png",
           "128": "icons/zipline128.png"
