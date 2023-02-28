@@ -64,7 +64,7 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
                             sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> can't contact server");
                         });
                     } else {
-                        sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> error requesting link");
+                        sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> can't contact server");
                     }
               }); 
 
