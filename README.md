@@ -1,7 +1,6 @@
 # Zipline Chrome Extension
 A Chrome extension to create short URLs using [Zipline](https://zipline.diced.tech/). This extension is being developed and tested (so far) using Brave v1.48.167. I don't really know what I'm doing, so feedback is welcome. It's basically working as is.
 
-_Security note: The API token is stored in storage.sync. Google does not recommend this for sensitive data, but their solution is to use storage.session, which is deleted when you close the browser. That's not very user friendly and would mean having to add your token after each browser start. If you're worried about this security issue don't use the extension. Any ideas for a better solution?_
 <br>
 <br>
 ***
@@ -16,6 +15,8 @@ _Security note: The API token is stored in storage.sync. Google does not recomme
 
 <br>
 <br>
+
+_Security note: The API token is stored in storage.sync. Google does not recommend this for sensitive data, but their solution is to use storage.session, which is deleted when you close the browser. That's not very user friendly and would mean having to add your token after each browser start. If you're worried about this security issue don't use the extension. Any ideas for a better solution?_
 
 ***
 ## Attribution
