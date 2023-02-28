@@ -7,7 +7,7 @@ _Security note: The API token is stored in storage.sync. Google does not recomme
 ***
 ## Screenshots (In Development)
 
-![Main Page](https://h8ks.me/u/yHmiQE.png) ![Settings Page](https://h8ks.me/u/FRpc7u.png)
+![Main Page](https://h8ks.me/u/8gFUxK.png) ![Settings Page](https://h8ks.me/u/n2Xs1x.png)
 <br>
 <br>
 ***
