@@ -35,27 +35,38 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
                 serverObj[vanity="vanity"] = document.getElementById("vanity").value;
             };
 
-            requestURL(hostURL, data.myTokenStored, serverObj).then((data) => {
-                data.json().then((payload) => {
-                    console.log(data.status);
-                    switch (data.status) {
-                        case 200:
-                            sendAlert(alertColor="green", alertText="<strong>Success!</strong> Short URL copied to clipboard");
-                            navigator.clipboard.writeText(payload[url]).then();
-                            break;
-                        case 400:
-                            sendAlert(alertColor="red", alertText="<strong>Request Error!</strong> " + payload.error);
-                            break;
-                        case 401:
-                            sendAlert(alertColor="red", alertText="<strong>Auth Error!</strong> " + payload.error);
-                            break;
-                        case 405 || 405:
-                            sendAlert(alertColor="red", alertText="<strong>Uknown Host!</strong> server not found");
-                        default:
-                            sendAlert(alertColor="red", alertText="<strong>Uknown Response!</strong> something went wrong");
-                    };
-                });
-            });
+            // Make the POST request to get the short link back. The error handling here was difficult for me to understand and is still
+            // a bit fuzzy. I made heavy use of stackoverflow examples...
+            fetch(hostURL.href, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'authorization': data.myTokenStored
+                },
+                body: JSON.stringify(serverObj)
+              })
+              .then(response => {
+                if (!response.ok) throw response;
+                return response.json();
+              })
+              .then(response => {
+                sendAlert(alertColor="green", alertText="<strong>Success!</strong> Short URL copied to clipboard");
+                navigator.clipboard.writeText(response.url).then();
+                setTimeout(function(){window.close()}, 800);
+                return response;
+              })
+              .catch(error => {
+                    if (typeof error.json === "function") {
+                        error.json().then(jsonError => {
+                            sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> " + jsonError.error);
+                        }).catch(genericError => {
+                            sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> can't contact server");
+                        });
+                    } else {
+                        sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> error requesting link");
+                    }
+              }); 
 
 
             // setTimeout(function(){window.close()}, 800);
@@ -71,19 +82,7 @@ function sendAlert(alertColor, alertText){
 
 closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});
 
-async function requestURL(url = '', auth = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'authorization': auth
-        },
-        body: JSON.stringify(data)
-    })
-    .catch( err => {
-        sendAlert(alertColor="red", alertText="<strong>Request Failed!</strong> " + err);
-    });
-
-    return response;
-
-};
+// Listen for click on Vanity info button and show alert with more information
+vanityInfo.addEventListener('click', function () {
+    sendAlert(alertColor="blue", alertText="Optional custom link extension for Zipline to use instead of a random string.")
+});

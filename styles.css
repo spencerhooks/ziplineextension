@@ -23,6 +23,16 @@
     color: black;
 }
 
+.infoButton {
+    margin-right: 20px;
+    float: right;
+    cursor: pointer;
+}
+
+.infoButton:hover {
+    color: blue;
+}
+
 .title-bar {
     display: flex;
     align-items: center;
