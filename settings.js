@@ -47,7 +47,8 @@ function getInputValue(){
 function sendAlert(alertColor, alertText){
     document.getElementById("alert").style.backgroundColor = alertColor;
     document.getElementById("alert-text").innerHTML = alertText;
-    document.getElementById("alert").style.display = "inline";
+    // document.getElementById("alert").style.display = "inline";
+    document.getElementById("alert").style.display = "flex";
 }
 
 // Listen for clicks on the alert's close button
@@ -55,10 +56,10 @@ closebtn.addEventListener('click', function () {document.getElementById("alert")
 
 // Listen for click on API Authorization Token info button and show alert with more information
 tokenInfo.addEventListener('click', function () {
-    sendAlert(alertColor="blue", alertText="Copy token from your Zipline dashboard by clicking your username in the top right.")
+    sendAlert(alertColor="#216ead", alertText="Copy token from your Zipline dashboard by clicking your username in the top right.")
 });
 
 // Listen for click on Server Address info button and show alert with more information
 serverInfo.addEventListener('click', function () {
-    sendAlert(alertColor="blue", alertText="Enter the url of your Zipline server (including the port number if necessary). This should be what you use for the dashboard. No need to include path to api (i.e. /api/shorten).")
+    sendAlert(alertColor="#216ead", alertText="Enter the url of your Zipline server (including the port number, if necessary). This should be what you use to reach the Zipline dashboard. No need to include path to api (i.e. /api/shorten).")
 });

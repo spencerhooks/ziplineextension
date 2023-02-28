@@ -75,12 +75,12 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
 function sendAlert(alertColor, alertText){
     document.getElementById("alert").style.backgroundColor = alertColor;
     document.getElementById("alert-text").innerHTML = alertText;
-    document.getElementById("alert").style.display = "inline";
+    document.getElementById("alert").style.display = "flex";
 }
 
 closebtn.addEventListener('click', function () {document.getElementById("alert").style.display = "none"});
 
 // Listen for click on Vanity info button and show alert with more information
 vanityInfo.addEventListener('click', function () {
-    sendAlert(alertColor="blue", alertText="Optional custom link extension for Zipline to use instead of a random string.")
+    sendAlert(alertColor="#216ead", alertText="Optional custom link extension for Zipline to use instead of a random string.")
 });

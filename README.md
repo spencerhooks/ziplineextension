@@ -14,8 +14,6 @@ _Security note: The API token is stored in storage.sync. Google does not recomme
 ## To Do List
 1. Figure out why Firefox doesn't allow access to storage
 1. Do more complete testing on Edge & Chrome (works initially)
-1. Add effect to buttons to show that they've been pushed (using alerts for now)?
-1. Center alert close buttons vertically (small bit of polish)
 
 <br>
 <br>
