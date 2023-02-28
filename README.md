@@ -12,8 +12,7 @@ _Security note: The API token is stored in storage.sync. Google does not recomme
 <br>
 ***
 ## To Do List
-1. Figure out why Firefox doesn't allow access to storage
-1. Do more complete testing on Edge & Chrome (works initially)
+1. Do more complete testing accros Brave, Chrome, Edge, Firefox, (works initially)
 
 <br>
 <br>
