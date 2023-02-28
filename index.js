@@ -68,8 +68,6 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
                     }
               }); 
 
-
-            // setTimeout(function(){window.close()}, 800);
         });
     };
 });
