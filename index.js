@@ -64,7 +64,7 @@ chrome.tabs.query({active: true, currentWindow: true}, tabs => {
                             sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> can't contact server");
                         });
                     } else {
-                        sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> can't contact server");
+                        sendAlert(alertColor="red", alertText="<strong>Error " + error.status + " </strong> can't contact server");  // Change this alert for typeof error.status === "undefined" and just manually call it a 404 (for Firefox)
                     }
               }); 
 
