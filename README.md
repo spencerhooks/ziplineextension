@@ -13,7 +13,7 @@ A Chrome extension to create short URLs using [Zipline](https://zipline.diced.te
 
 ## Screenshots
 
-![Main Page](https://h8ks.me/u/8gFUxK.png) ![Settings Page](https://h8ks.me/u/n2Xs1x.png)
+<img src="https://h8ks.me/u/8gFUxK.png" style="border: 2px solid grey"> &nbsp; &nbsp; <img src="https://h8ks.me/u/n2Xs1x.png" style="border: 2px solid grey">
 <br>
 <br>
 ***

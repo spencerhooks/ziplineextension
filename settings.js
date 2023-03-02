@@ -14,9 +14,10 @@ saveButton.addEventListener('click', getInputValue);
 // Add listener to the cancel button and move back to the main page
 cancelButton.addEventListener('click', function(){location.href = 'index.html';});
 
+// Get the user input, do some validation, check the server version for known issues, then store the values. The 
 function getInputValue(){
     
-    // Selecting the input element and get its value 
+    // Select the input element and get its value 
     var inputServer = document.getElementById("serverAddress").value;
     var inputToken = document.getElementById("apiToken").value;
 
@@ -34,6 +35,9 @@ function getInputValue(){
         sendAlert(alertColor="red", alertText="<strong>Invalid Token Length</strong> Check token");
         return;
     };
+
+    // Check the server version so that we can warn the user about any known issues with their version. Purposely ignore any errors as the
+    // version api can be turned off so we cannot know why the request failed.
 
     // Store the value
     chrome.storage.sync.set({ myServerStored: inputServer });
