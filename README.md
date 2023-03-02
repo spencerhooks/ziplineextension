@@ -23,7 +23,7 @@ A Chrome extension to create short URLs using [Zipline](https://zipline.diced.te
 <br>
 
 _Security note: The API token is stored in storage.sync. Google does not recommend this for sensitive data, but their solution is to use storage.session, which is deleted when you close the browser. That's not very user friendly and would mean having to add your token after each browser start. If you're worried about this security issue don't use the extension. Any ideas for a better solution?_
-
+please note that this does not work with any instances With a version below 3.7.0-rc4
 
 ***
 ## Attribution
