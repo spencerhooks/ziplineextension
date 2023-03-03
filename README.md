@@ -9,6 +9,13 @@ A Chrome extension to create short URLs using [Zipline](https://zipline.diced.te
 <br>
 <br>
 
+## Release Notes
+Version 0.9.2: There is a known bug in the shorten api in v3.7.0-rc3 of Zipline. This bug causes Zipline to return an incorrect url to the extension, which is then copied to the users clipboard. This bug has been fixed in newer versions of Zipline (starting with v3.7.0-rc4), so please update your server.
+
+<br>
+<br>
+
+
 ***
 
 ## Screenshots
