@@ -26,7 +26,7 @@ Version 0.9.2: There is a known bug in the shorten api in v3.7.0-rc3 of Zipline.
 
 ## Screenshots
 
-<kbd><img src="https://h8ks.me/u/8gFUxK.png"></kbd> &nbsp; &nbsp; <kbd><img src="https://h8ks.me/u/n2Xs1x.png"></kbd>
+<kbd><img src="https://h8ks.me/u/78uOHA.png"></kbd> &nbsp; &nbsp; <kbd><img src="https://h8ks.me/u/n2Xs1x.png"></kbd>
 <br>
 <br>
 ***
