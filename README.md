@@ -14,6 +14,11 @@ A Chrome extension to create short URLs using [Zipline](https://zipline.diced.te
 <br>
 <br>
 
+## The extensions are now published in the [Chrome Web Store](https://chrome.google.com/webstore/detail/zipline-url-shortener/aiohifpcfjjjfalokkbddcfnfdhgihld) and [addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/zipline-url-shortener/).
+
+<br>
+<br>
+
 ## Release Notes
 Version 1.0: Creating release to publish
 
