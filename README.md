@@ -1,5 +1,5 @@
-# Zipline Chrome Extension
-A Chrome extension to create short URLs using [Zipline](https://zipline.diced.tech/). This extension has been tested on Brave, Chrome, Edge, and Firefox.
+# Zipline Browser Extension
+An extension to create short URLs using [Zipline](https://zipline.diced.tech/). This extension has been tested on Brave, Chrome, Edge, and Firefox.
 
 ![Chrome](https://github.com/alrra/browser-logos/blob/main/src/chrome/chrome_64x64.png?raw=true)
 ![Firefox](https://github.com/alrra/browser-logos/blob/main/src/firefox/firefox_64x64.png?raw=true)
